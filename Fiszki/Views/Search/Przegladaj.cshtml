@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Fiszki.Models.Fiszkii>
+
+@{
+    ViewData["Title"] = "Przegladaj";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="~/css/style.css" rel="stylesheet" />
+<link href="~/css/util.css" rel="stylesheet" />
+<link href="~/css/main.css" rel="stylesheet" />
+
+
+
+<body>
+
+    <div>
+        <h1 style="text-align: center;">Tutaj możesz przejrzeć swoje fiszki</h1>
+    </div>
+    <hr style="height:2px;border-width:0;color:gray;background-color:blueviolet;margin-bottom:50px;margin-bottom:50px;" />
+    <section style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+
+        <div class="center">
+            <div style="text-align: right; margin-bottom: 20px;" class="form-group">
+                @Html.ActionLink("Kliknij aby posortować po nazwie", "Przegladaj", new { sortOrder = ViewBag.NameSortParm })
+            </div>
+
+            <div class="row">
+                <div class="table-wrap">
+                    <table class="table">
+                        <thead class="thead-primary">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Nazwa_fiszki)
+
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Opis)
+
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Przedmiot)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Kategoria)
+                                </th>
+                                <th>
+                                    <a>Nauczone</a>
+                                </th>
+                                <th>
+                                    <a>Opcje</a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Nazwa_fiszki)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Opis)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Przedmiot)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Kategoria)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Zrobione)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edytuj", "Edit", new { id = item.id_fiszki }) |
+
+                                        @Html.ActionLink("Usuń", "Delete", new { id = item.id_fiszki })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+    <p>
+        <a asp-controller="Search" asp-action="Create">Przejdź do stworzenia fiszki</a>
+    </p>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main1.js"></script>
+</body>

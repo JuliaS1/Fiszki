@@ -1,0 +1,55 @@
+﻿@model Fiszki.Models.Fiszkii
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/css/util.css" rel="stylesheet" />
+<link href="~/css/main.css" rel="stylesheet" />
+<div>
+    <h1 style="text-align: center">Tutaj edytuj swoją fiszkę</h1>
+</div>
+<hr style="height:2px;border-width:0;color:gray;background-color:blueviolet;margin-bottom:50px;" />
+
+<div style="display: flex; align-items: center; justify-content: center;">
+    <div class="center">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="wrap-input100 validate-input m-b-23">
+                <label asp-for="Nazwa_fiszki" class="label-input100"></label>
+                <input asp-for="Nazwa_fiszki" class="input100" />
+                <span asp-validation-for="Nazwa_fiszki" class="focus-input100"></span>
+            </div>
+            <div class="wrap-input100 validate-input m-b-23">
+                <label asp-for="Opis" class="label-input100"></label>
+                <input asp-for="Opis" class="input100" />
+                <span asp-validation-for="Opis" class="focus-input100"></span>
+            </div>
+            <div class="wrap-input100 validate-input m-b-23">
+                <label asp-for="Przedmiot" class="label-input100"></label>
+                <input asp-for="Przedmiot" class="input100" />
+                <span asp-validation-for="Przedmiot" class="text-danger"></span>
+            </div>
+            <div class="wrap-input100 validate-input m-b-23">
+                <label asp-for="Kategoria" class="label-input100"></label>
+                <input asp-for="Kategoria" class="input100"  />
+                <span asp-validation-for="Kategoria" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label for="_checkbox">
+                    @Html.CheckBox("Zrobione")
+                    Nauczone
+                </label>
+            </div>
+            <div style="text-align: right; margin-bottom: 20px;" class="form-group">
+                <input type="submit" value="Zapisz" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Search" asp-action="Przegladaj">Wróć do listy fiszek</a>
+</div>
+
